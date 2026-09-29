@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "spotgpu-mcp"
+version = "0.1.0"
+description = "SpotGPU MCP server — spot GPU rental prices via GET /v1/spot"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+authors = [{ name = "SpotGPU" }]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Developers",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Topic :: Software Development :: Libraries",
+  "Typing :: Typed",
+]
+keywords = ["mcp", "gpu", "spot", "pricing", "vast", "runpod"]
+dependencies = [
+  "mcp>=2,<3",
+  "httpx>=0.27.0",
+]
+
+[project.urls]
+Homepage = "https://spotgpu-api.fly.dev"
+Documentation = "https://spotgpu-api.fly.dev/docs"
+
+[project.scripts]
+spotgpu-mcp = "spotgpu_mcp.server:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["spotgpu_mcp*"]

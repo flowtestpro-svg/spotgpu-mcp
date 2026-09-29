@@ -1,0 +1,39 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.flowtestpro-svg/spotgpu-mcp",
+  "description": "Spot GPU rental prices (Vast + RunPod) via SpotGPU GET /v1/spot",
+  "title": "SpotGPU",
+  "websiteUrl": "https://spotgpu-api.fly.dev",
+  "version": "0.1.0",
+  "repository": {
+    "url": "https://github.com/flowtestpro-svg/spotgpu-mcp",
+    "source": "github"
+  },
+  "packages": [
+    {
+      "registryType": "pypi",
+      "registryBaseUrl": "https://pypi.org",
+      "identifier": "spotgpu-mcp",
+      "version": "0.1.0",
+      "runtimeHint": "uvx",
+      "transport": {
+        "type": "stdio"
+      },
+      "environmentVariables": [
+        {
+          "name": "SPOTGPU_API_KEY",
+          "description": "SpotGPU API key (sk_\u2026). Credits pay for lookups, not GPU rental.",
+          "isRequired": true,
+          "isSecret": true
+        },
+        {
+          "name": "SPOTGPU_BASE_URL",
+          "description": "SpotGPU API base URL",
+          "default": "https://spotgpu-api.fly.dev",
+          "isRequired": false,
+          "isSecret": false
+        }
+      ]
+    }
+  ]
+}
