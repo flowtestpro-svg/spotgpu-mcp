@@ -13,7 +13,7 @@ Exposes one tool: **`spot_price`** → `GET /v1/spot` (Vast + RunPod best + alts
 
 Requires Python 3.10+ and a SpotGPU API key (`sk_…` from https://spotgpu-api.fly.dev).
 
-### One-shot (after PyPI publish)
+### One-shot (PyPI)
 
 ```bash
 uvx spotgpu-mcp
@@ -106,3 +106,10 @@ Requests send `X-SpotGPU-Client: mcp-spotgpu`.
 
 
 PyPI / Official MCP Registry / Smithery / Glama publish is deferred until Biz Bot approval. `server.json` and `glama.json` stubs are in this package for later.
+
+## Published
+
+- PyPI: https://pypi.org/project/spotgpu-mcp/
+- MCP Registry: `io.github.flowtestpro-svg/spotgpu-mcp`
+- Glama: https://glama.ai/mcp/servers/flowtestpro-svg/spotgpu-mcp
+- GitHub: https://github.com/flowtestpro-svg/spotgpu-mcp
