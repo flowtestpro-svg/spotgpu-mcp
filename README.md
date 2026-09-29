@@ -104,6 +104,5 @@ On success returns JSON text of the API body (`best.usd_per_hr`, `alts`, …).
 
 Requests send `X-SpotGPU-Client: mcp-spotgpu`.
 
-## Not published yet
 
 PyPI / Official MCP Registry / Smithery / Glama publish is deferred until Biz Bot approval. `server.json` and `glama.json` stubs are in this package for later.
