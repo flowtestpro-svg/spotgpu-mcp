@@ -4,7 +4,7 @@
   "description": "Spot GPU rental prices (Vast + RunPod) via SpotGPU GET /v1/spot",
   "title": "SpotGPU",
   "websiteUrl": "https://spotgpu-api.fly.dev",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "repository": {
     "url": "https://github.com/flowtestpro-svg/spotgpu-mcp",
     "source": "github"
@@ -14,7 +14,7 @@
       "registryType": "pypi",
       "registryBaseUrl": "https://pypi.org",
       "identifier": "spotgpu-mcp",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "runtimeHint": "uvx",
       "transport": {
         "type": "stdio"
@@ -22,7 +22,7 @@
       "environmentVariables": [
         {
           "name": "SPOTGPU_API_KEY",
-          "description": "SpotGPU API key (sk_\u2026). Credits pay for lookups, not GPU rental.",
+          "description": "SpotGPU API key (sk_\u2026). Get a free 25-credit trial key: curl -X POST https://spotgpu-api.fly.dev/v1/keys. Credits pay for lookups, not GPU rental.",
           "isRequired": true,
           "isSecret": true
         },

@@ -13,6 +13,14 @@ CLIENT_HEADER = "mcp-spotgpu"
 TIMEOUT_S = 60.0
 
 
+def _signup_hint(base: str) -> str:
+    return (
+        f"Get a free trial key (25 credits, no auth/email): curl -X POST {base}/v1/keys "
+        f"— then set SPOTGPU_API_KEY in your MCP client env. "
+        f"Buy more credits at {base}/topup"
+    )
+
+
 class SpotGPUError(Exception):
     """Raised for API/config failures; message is safe for MCP tool errors."""
 
@@ -29,8 +37,8 @@ def _api_key() -> str:
     key = os.environ.get("SPOTGPU_API_KEY")
     if not key or not key.strip():
         raise SpotGPUError(
-            "Server misconfigured: SPOTGPU_API_KEY not set. "
-            "Set it in your MCP client env (Claude Desktop / Cursor)."
+            "SPOTGPU_API_KEY not set. Set it in your MCP client env (Claude Desktop / Cursor). "
+            + _signup_hint(_base_url())
         )
     return key.strip()
 
@@ -67,10 +75,13 @@ def _map_http_error(status: int, body: Any, base: str) -> SpotGPUError:
         return SpotGPUError(
             "Invalid or missing API key — check SPOTGPU_API_KEY"
             + _detail_snippet(body)
+            + ". "
+            + _signup_hint(base)
         )
     if status == 402:
         return SpotGPUError(
-            f"Insufficient credits — top up at {base}/topup or POST /v1/checkout"
+            f"Insufficient credits (HTTP 402) — buy a credit pack at {base}/topup "
+            f"(or POST {base}/v1/checkout with your key)"
             + _detail_snippet(body)
         )
     if status == 404:

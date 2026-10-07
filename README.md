@@ -11,7 +11,28 @@ Exposes one tool: **`spot_price`** → `GET /v1/spot` (Vast + RunPod best + alts
 
 ## Install / run
 
-Requires Python 3.10+ and a SpotGPU API key (`sk_…` from https://spotgpu-api.fly.dev).
+Requires Python 3.10+ and a SpotGPU API key.
+
+### Get an API key (free trial, 25 credits)
+
+```bash
+curl -X POST https://spotgpu-api.fly.dev/v1/keys
+```
+
+No auth, no email. The response contains `api_key` (shown **once** — store it) with 25 trial
+credits (1 credit per successful lookup). Limit: 3 keys per IP per 24h. Put it in
+`SPOTGPU_API_KEY` in your MCP client config. Check your balance:
+
+```bash
+curl -H "Authorization: Bearer $SPOTGPU_API_KEY" https://spotgpu-api.fly.dev/v1/account
+```
+
+### Out of credits (HTTP 402)
+
+When credits run out the API returns **402 `insufficient_credits`** and the tool error points to
+the top-up page. Buy a credit pack ($5 / 500, $10 / 1000, $50 / 5000) at
+**https://spotgpu-api.fly.dev/topup**, or `POST /v1/checkout` with `{"pack_id": "credits_500"}`
+and your Bearer key to get a Stripe Checkout URL. A 401 tool error includes the signup curl above.
 
 ### One-shot (PyPI)
 
@@ -104,8 +125,6 @@ On success returns JSON text of the API body (`best.usd_per_hr`, `alts`, …).
 
 Requests send `X-SpotGPU-Client: mcp-spotgpu`.
 
-
-PyPI / Official MCP Registry / Smithery / Glama publish is deferred until Biz Bot approval. `server.json` and `glama.json` stubs are in this package for later.
 
 ## Published
 
