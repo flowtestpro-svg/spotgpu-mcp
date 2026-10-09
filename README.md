@@ -1,3 +1,5 @@
+> **Discontinued Oct 2026: the SpotGPU API has been shut down. This package no longer works.**
+
 # spotgpu-mcp
 
 MCP (Model Context Protocol) server for [SpotGPU](https://spotgpu-api.fly.dev) spot GPU rental prices.
